@@ -10,7 +10,7 @@ public class Tests
     {
         var ims = new InteractiveMergeSort<string>(new [] { "Red", "Green", "Blue", "Yellow", "Purple" });
         
-        ims.Start();
+        ims.Merge();
 
         ims.ComparisonItemOne.Should().Be("Red");
         ims.ComparisonItemTwo.Should().Be("Green");
@@ -54,7 +54,7 @@ public class Tests
     {
         var ims = new InteractiveMergeSort<string>(new [] { "Red", "Green", "Blue", "Yellow", "Purple" });
         
-        ims.Start();
+        ims.Merge();
 
         ims.ComparisonItemOne.Should().Be("Red");
         ims.ComparisonItemTwo.Should().Be("Green");
@@ -107,7 +107,7 @@ public class Tests
         // act
         var ims = new InteractiveMergeSort<int>(nums.ToArray());
         
-        ims.Start();
+        ims.Merge();
         
         while (!ims.IsComplete)
         {
