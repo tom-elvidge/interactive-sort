@@ -2,11 +2,73 @@
 
 @using MergeSortWeb.Pages.Store
 
+@inherits FluxorComponent
+
 <PageTitle>Merge Sort</PageTitle>
 
-<MudText Typo="Typo.h3" GutterBottom="true">Hello!</MudText>
-@* <MudText Class="mb-8">The current count is @State.Value.Count</MudText> *@
-@* <MudButton OnClick="@(() => Dispatcher.Dispatch(new IncrementCount()))">Increment</MudButton> *@
+<MudStack AlignItems="AlignItems.Center" Justify="Justify.Center">
+    @if (!State.Value.Sorting)
+    {
+        <MudButton OnClick="@(_ => Dispatcher.Dispatch(new GetDogs()))"
+                   Size="Size.Large"
+                   Color="Color.Primary">
+            Start Sorting
+        </MudButton>
+    }
+    
+    @if (!State.Value.Sorting && State.Value.Sorted.Length != 0)
+    {
+        <MudText>Sorted with @State.Value.ComparisonCount comparisons</MudText>
+        <MudList>
+            @foreach (var dogImgSrc in State.Value.Sorted)
+            {
+                <MudImage Src="@dogImgSrc"
+                          Alt="A dog"
+                          ObjectFit="ObjectFit.Cover"
+                          Elevation="25"
+                          Class="rounded-lg ma-2"
+                          Width="100"
+                          Height="100" />   
+            }
+        </MudList>
+    }
+    
+    @if (State.Value.Sorting)
+    {
+        <MudProgressLinear Color="Color.Info"
+                           Size="Size.Medium"
+                           Min="0"
+                           Max="@State.Value.EstimateTotalComparisons"
+                           Value="@Progress()"
+                           Class="mb-4"/>
+        
+        <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.Center">
+            <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center">
+                <MudButton OnClick="@(_ => Dispatcher.Dispatch(new ComparisonResult(true)))">
+                    <MudImage Src="@State.Value.ItemOne"
+                              Alt="Comparison item one"
+                              ObjectFit="ObjectFit.Cover"
+                              Elevation="25"
+                              Class="rounded-lg"
+                              Width="500"
+                              Height="500" />
+                </MudButton>
+            </MudStack>
+            
+            <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center">
+                <MudButton OnClick="@(_ => Dispatcher.Dispatch(new ComparisonResult(false)))">
+                    <MudImage Src="@State.Value.ItemTwo"
+                              Alt="Comparison item two"
+                              ObjectFit="ObjectFit.Cover"
+                              Elevation="25"
+                              Class="rounded-lg"
+                              Width="500"
+                              Height="500"/>
+                </MudButton>
+            </MudStack>
+        </MudStack>
+    }
+</MudStack>
 
 @code
 {
@@ -15,4 +77,8 @@
 
     [Inject]
     public IDispatcher Dispatcher { get; set; } = null!;
+
+    private int Progress() => State.Value.ComparisonCount > State.Value.EstimateTotalComparisons
+        ? State.Value.EstimateTotalComparisons
+        : State.Value.ComparisonCount;
 }

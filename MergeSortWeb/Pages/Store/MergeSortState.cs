@@ -1,28 +1,25 @@
-using System.Collections.Immutable;
 using Fluxor;
 
 namespace MergeSortWeb.Pages.Store;
 
 [FeatureState]
 public record MergeSortState(
-    string[] Original,
+    bool Sorting,
+    string[] Input,
     string[] Sorted,
-    int N,
-    int CurrentSize,
-    int LeftStart,
-    int Mid,
-    int RightEnd,
-    (string, string) Comparison)
+    string ItemOne,
+    string ItemTwo,
+    int ComparisonCount,
+    int EstimateTotalComparisons)
 {
     public MergeSortState() : this(
+        false,
         Array.Empty<string>(),
         Array.Empty<string>(),
+        string.Empty,
+        string.Empty,
         0,
-        0,
-        0,
-        0,
-        0,
-        (string.Empty, string.Empty))
+        0)
     {
     }
 }
