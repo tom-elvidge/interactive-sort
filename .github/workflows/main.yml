@@ -27,8 +27,8 @@ jobs:
       run: dotnet workload install wasm-tools
     - name: Publish
       run: dotnet publish MergeSortWeb/MergeSortWeb.csproj -c Release -o release --nologo
-    - name: Change base-tag in index.html from / to merge-sort-web
-      run: sed -i 's/<base href="\/" \/>/<base href="\/merge-sort-web\/" \/>/g' release/wwwroot/index.html
+    - name: Change base-tag in index.html from / to interactive-sort
+      run: sed -i 's/<base href="\/" \/>/<base href="\/interactive-sort\/" \/>/g' release/wwwroot/index.html
     - name: Add .nojekyll file
       run: touch release/wwwroot/.nojekyll
     - name: Upload GitHub Pages artifact

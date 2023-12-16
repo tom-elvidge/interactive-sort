@@ -1,7 +1,7 @@
 using FluentAssertions;
-using MergeSortWeb.Pages.Store;
+using InteractiveSort.Pages.Store;
 
-namespace MergeSortWeb.Tests;
+namespace InteractiveSort.Tests;
 
 public class Tests
 {

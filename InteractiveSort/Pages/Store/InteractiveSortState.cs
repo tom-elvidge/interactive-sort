@@ -1,9 +1,9 @@
 using Fluxor;
 
-namespace MergeSortWeb.Pages.Store;
+namespace InteractiveSort.Pages.Store;
 
 [FeatureState]
-public record MergeSortState(
+public record InteractiveSortState(
     bool Sorting,
     string[] Input,
     string[] Sorted,
@@ -12,7 +12,7 @@ public record MergeSortState(
     int ComparisonCount,
     int EstimateTotalComparisons)
 {
-    public MergeSortState() : this(
+    public InteractiveSortState() : this(
         false,
         Array.Empty<string>(),
         Array.Empty<string>(),

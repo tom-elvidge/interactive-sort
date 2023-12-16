@@ -1,10 +1,10 @@
 ﻿@page "/"
 
-@using MergeSortWeb.Pages.Store
+@using InteractiveSort.Pages.Store
 
 @inherits FluxorComponent
 
-<PageTitle>Merge Sort</PageTitle>
+<PageTitle>Interactive Sort</PageTitle>
 
 <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center">
     @if (!State.Value.Sorting)
@@ -73,7 +73,7 @@
 @code
 {
     [Inject]
-    public IState<MergeSortState> State { get; set; } = null!;
+    public IState<InteractiveSortState> State { get; set; } = null!;
 
     [Inject]
     public IDispatcher Dispatcher { get; set; } = null!;

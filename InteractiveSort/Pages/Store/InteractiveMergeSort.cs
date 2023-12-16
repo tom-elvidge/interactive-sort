@@ -1,4 +1,4 @@
-namespace MergeSortWeb.Pages.Store;
+namespace InteractiveSort.Pages.Store;
 
 public class InteractiveMergeSort<T>
 {

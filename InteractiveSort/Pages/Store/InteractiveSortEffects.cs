@@ -2,19 +2,19 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using Fluxor;
 
-namespace MergeSortWeb.Pages.Store;
+namespace InteractiveSort.Pages.Store;
 
 public record DogsResponse(string[] Message, string Status);
 
-public class MergeSortEffects
+public class InteractiveSortEffects
 {
-    private readonly IState<MergeSortState> _state;
+    private readonly IState<InteractiveSortState> _state;
     private readonly IHttpClientFactory _httpClientFactory;
 
     private InteractiveMergeSort<string>? _mergeSort;
 
-    public MergeSortEffects(
-        IState<MergeSortState> state,
+    public InteractiveSortEffects(
+        IState<InteractiveSortState> state,
         IHttpClientFactory httpClientFactory)
     {
         _state = state;

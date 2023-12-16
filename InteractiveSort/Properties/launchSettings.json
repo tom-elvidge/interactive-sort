@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "MergeSortWeb": {
+    "InteractiveSort": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
