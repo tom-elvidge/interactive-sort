@@ -26,7 +26,7 @@ jobs:
     - name: Install wasm-tools
       run: dotnet workload install wasm-tools
     - name: Publish
-      run: dotnet publish MergeSortWeb/MergeSortWeb.csproj -c Release -o release --nologo
+      run: dotnet publish InteractiveSort/InteractiveSort.csproj -c Release -o release --nologo
     - name: Change base-tag in index.html from / to interactive-sort
       run: sed -i 's/<base href="\/" \/>/<base href="\/interactive-sort\/" \/>/g' release/wwwroot/index.html
     - name: Add .nojekyll file
